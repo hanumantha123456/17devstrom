@@ -180,11 +180,35 @@ def dashboard():
 
 @app.route('/admin/dashboard')
 def admin_dashboard():
-    if 'username' not in session or session.get('is_admin', 'no') != 'yes':
+    if 'username' not in session:
         return redirect('/login')
 
-    complaints = read_csv(COMPLAINTS_FILE)
-    return render_template('admin_dashboard.html', complaints=complaints)
+    username = session['username']
+
+    # Read complaints
+    complaints = read_csv('complaints.csv')
+
+    # Get current admin's department (optional)
+    current_user = next((u for u in read_csv('users.csv') if u['username'] == username), None)
+    department = current_user.get('department') if current_user else None
+
+    # Filter by category and status from query params
+    selected_category = request.args.get('category', '').lower()
+    selected_status = request.args.get('status', '')
+
+    # Apply filters
+    filtered_complaints = [
+        c for c in complaints
+        if (not selected_category or c['category'].lower() == selected_category)
+        and (not selected_status or c['status'] == selected_status)
+        and (not department or c['assigned_To'].lower() == department.lower())
+    ]
+
+    return render_template('admin_dashboard.html',
+                           complaints=filtered_complaints,
+                           selected_category=selected_category,
+                           selected_status=selected_status)
+
 
 @app.route('/submit-form', methods=['GET', 'POST'])
 def submit_form():
