@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Complaint</title>
+    <style>
+        body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: #E4EFE7;
+        color: #f1f1f1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+        h2 {
+            text-align: center;
+            color: black
+        }
+
+        form {
+            background: #FAF1E6;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select,
+        textarea,
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            background: #2c2c2c;
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(-45deg, skyblue, orange, red, orange, skyblue);
+            background-size: 300% 300%;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            animation: gradient 4s ease infinite;
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            color: #76c7ff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 20px;
+            }
+
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="container">
+    <form action="/submit-form" method="POST">
+
+        <h2>Submit a Complaint</h2>
+
+        <label for="category">Select Issue:</label>
+        <select name="category" required>
+            <option value="">-- Select --</option>
+            <option>I need help with a failed payment</option>
+            <option>I want to get a refund</option>
+            <option>I can't access my account</option>
+            <option>The app is not working properly</option>
+            <option>Please check my transaction issue</option>
+            <option>How do I change my password?</option>
+            <option>I got charged twice</option>
+            <option>I see an error when logging in</option>
+            <option>My refund hasn't come</option>
+            {% for cat in categories %}
+            <option value="{{ cat }}">{{ cat }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="message">Describe your complaint:</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+
+        <a href="/dashboard" class="btn btn-outline-primary btn-back">← Back to Dashboard</a>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+ticket ID,customer,category,message,status,timestamp,assigned_To
+TICKET-df60669b,hraya0204@gmail.com,account access,qqqq,Pending,2025-04-11 23:17:41,support_team@example.com
+TICKET-ed366432,hraya0204@gmail.com,refund,qqqq,Pending,2025-04-11 23:18:06,support_team@example.com
+TICKET-141a351d,hraya0204@gmail.com,payment,qwqw,Pending,2025-04-11 23:25:37,support_team@example.com
+d046274f,abc,refund,ssss,Submitted,2025-04-12 00:41:36,Finance Team
+a90d95ce,vamshi,payment,bbb,Submitted,2025-04-12 02:00:31,Billing Department
+8e430ba2,abc,category,assss,Submitted,2025-04-12 03:47:51,General Support
+d9f63422,abc,category,adadddd,Submitted,2025-04-12 03:51:25,General Support
+405facb0,abc,category,asdfff,Submitted,2025-04-12 03:57:37,General Support
+0d8530c5,anil,category,pass,Submitted,2025-04-12 04:09:43,General Support
+151435f9,abc,I see an error when logging in,aaaaaaaaaa,Submitted,2025-04-12 06:06:50,General Support
+83caa080,anil,Please check my transaction issue,transaction error,Submitted,2025-04-12 06:47:22,General Support
+3b2b48e3,anil,I can't access my account,abc,Submitted,2025-04-12 06:51:00,General Support
+0d5d239f,abc,I can't access my account,pppppppppppp,Submitted,2025-04-12 06:52:16,General Support
+8635636d,anil,My refund hasn't come,wwwwwwwwwwwwwwww,Submitted,2025-04-12 07:00:52,General Support
+4fed1e47,abc,Please check my transaction issue,lala,Submitted,2025-04-12 07:16:33,General Support
+512a89af,anil,I can't access my account,lhjlnk,Submitted,2025-04-12 07:17:27,General Support
+cf2a32eb,ganesh,I want to get a refund,qwerty,Submitted,2025-04-12 07:36:25,General Support
+3665f608,abc,I want to get a refund,qwer,Submitted,2025-04-12 08:07:07,General Support
+ca4f293d,abc,My refund hasn't come,ahsgsg,Submitted,2025-04-12 08:31:19,General Support
+08311a70,abc,I need help with a failed payment,1234,Submitted,2025-04-12 08:48:29,General Support

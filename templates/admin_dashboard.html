@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin-left: 20px;
+        }
+
+        /* Dashboard Container */
+        .dashboard-container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Update Status Page */
+        .update-status-container {
+            width: 50%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            font-size: 16px;
+        }
+
+        select, input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <a href="/admin/logout">Logout</a>
+    </header>
+
+    <!-- Admin Dashboard Page -->
+    <div class="dashboard-container">
+        <h2>Complaints List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Customer</th>
+                    <th>Category</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Assigned To</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for complaint in complaints %}
+                <tr>
+                    <td>{{ complaint['ticket ID'] }}</td>
+                    <td>{{ complaint['customer'] }}</td>
+                    <td>{{ complaint['category'] }}</td>
+                    <td>{{ complaint['message'] }}</td>
+                    <td>{{ complaint['status'] }}</td>
+                    <td>{{ complaint['assigned_To'] }}</td>
+                    <td><a href="{{ url_for('update_complaint_status', ticket_id=complaint['ticket ID']) }}">Update Status</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Update Status Page -->
+    {% if complaint %}
+    <div class="update-status-container">
+        <h2>Update Status for Complaint {{ complaint['ticket ID'] }}</h2>
+        <form method="POST">
+            <label for="status">Select Status:</label>
+            <select name="status" id="status">
+                <option value="pending" {% if complaint['status'] == 'pending' %}selected{% endif %}>Pending</option>
+                <option value="resolved" {% if complaint['status'] == 'resolved' %}selected{% endif %}>Resolved</option>
+                <option value="in-progress" {% if complaint['status'] == 'in-progress' %}selected{% endif %}>In Progress</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Update Status">
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>
