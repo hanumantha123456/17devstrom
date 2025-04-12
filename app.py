@@ -204,7 +204,7 @@ def admin_dashboard():
         and (not department or c['assigned_To'].lower() == department.lower())
     ]
 
-    return render_template('admin_dashboard.html',
+    return render_template('dashboard.html',
                            complaints=filtered_complaints,
                            selected_category=selected_category,
                            selected_status=selected_status)
