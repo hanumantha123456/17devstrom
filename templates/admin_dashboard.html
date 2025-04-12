@@ -100,6 +100,29 @@
     <!-- Admin Dashboard Page -->
     <div class="dashboard-container">
         <h2>Complaints List</h2>
+
+        <!-- Filter Form -->
+        <form method="GET" action="/admin/dashboard">
+            <label for="status">Filter by Status:</label>
+            <select name="status" id="status">
+                <option value="">All</option>
+                <option value="pending" {% if filter_status == 'pending' %}selected{% endif %}>Pending</option>
+                <option value="resolved" {% if filter_status == 'resolved' %}selected{% endif %}>Resolved</option>
+                <option value="in-progress" {% if filter_status == 'in-progress' %}selected{% endif %}>In Progress</option>
+            </select>
+
+            <label for="category">Filter by Category:</label>
+            <select name="category" id="category">
+                <option value="">All</option>
+                <option value="payment" {% if filter_category == 'payment' %}selected{% endif %}>payment</option>
+                <option value="account access" {% if filter_category == 'account access' %}selected{% endif %}>account access</option>
+                <option value="technical" {% if filter_category == 'technical' %}selected{% endif %}>technical</option>
+                <option value="refund" {% if filter_category == 'refund' %}selected{% endif %}>refund</option>
+            </select>
+            
+            <input type="submit" value="Apply Filters">
+        </form>
+
         <table>
             <thead>
                 <tr>
@@ -135,9 +158,9 @@
         <form method="POST">
             <label for="status">Select Status:</label>
             <select name="status" id="status">
-                <option value="pending" {% if complaint['status'] == 'pending' %}selected{% endif %}>Pending</option>
-                <option value="resolved" {% if complaint['status'] == 'resolved' %}selected{% endif %}>Resolved</option>
-                <option value="in-progress" {% if complaint['status'] == 'in-progress' %}selected{% endif %}>In Progress</option>
+                <option value="Pending" {% if complaint['status'] == 'Pending' %}selected{% endif %}>Pending</option>
+                <option value="Resolved" {% if complaint['status'] == 'Resolved' %}selected{% endif %}>Resolved</option>
+                <option value="In-Progress" {% if complaint['status'] == 'In-Progress' %}selected{% endif %}>In Progress</option>
             </select>
             <br><br>
             <input type="submit" value="Update Status">
